@@ -1,5 +1,7 @@
 export enum routes {
   MAINMENU = '/mainMenu',
   LOGOUT = '',
-  PROJECTTABLES = '/projectList'
+  PROJECTTABLES = '/projectList',
+  PROJECTEDIT = '/projectEdit',
+  PROJECTADD = '/projectAdd'
 }
