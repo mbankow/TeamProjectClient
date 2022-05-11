@@ -1,0 +1,22 @@
+.layout {
+  width: 100%;
+}
+
+.layout-sidebar {
+  height:calc(100vh - 64px);
+  margin-top: 64px;
+
+  @media (max-width: 576px) {
+    width: 218px;
+  }
+}
+
+.layout-content {
+  background-color: #F6F7FF;
+  height:calc(100vh - 64px);
+  margin-top: 64px;
+
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+}
