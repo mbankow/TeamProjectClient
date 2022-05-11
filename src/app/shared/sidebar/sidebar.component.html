@@ -1,1 +1,61 @@
-<p>sidebar works!</p>
+<mat-list>
+  <mat-list-item routerLink="">
+    <span class="material-icons">home</span> Menu główne
+  </mat-list-item>
+
+  <a mat-list-item (click)="toggleMenuContract()">
+    <span class="material-icons">sticky_note_2</span>Kontrakty
+    <mat-icon *ngIf="!showMenuContract">rozwin</mat-icon>
+    <mat-icon *ngIf="showMenuContract">zwin</mat-icon>
+  </a>
+
+  <mat-nav-list class="sidenav-submenu" *ngIf="showMenuContract">
+    <mat-list-item routerLink="" routerLinkActive="active"
+      >
+      Lista kontraktów
+    </mat-list-item>
+    <mat-list-item routerLink="" routerLinkActive="active"
+      >
+      Utwórz kontrakt
+    </mat-list-item>
+  </mat-nav-list>
+  <a mat-list-item >
+    <span class="material-icons">supervised_user_circle</span>Podwykonawcy
+    <mat-icon *ngIf="!showMenuVendor">rozwin</mat-icon>
+    <mat-icon *ngIf="showMenuVendor">zwin</mat-icon>
+  </a>
+  <mat-nav-list class="sidenav-submenu" *ngIf="showMenuVendor">
+    <mat-list-item routerLink="" routerLinkActive="active">
+      Lista podwykonawców
+    </mat-list-item>
+    <mat-list-item routerLink="" routerLinkActive="active">
+      Dodaj podwykonawcę
+    </mat-list-item>
+  </mat-nav-list>
+    <a mat-list-item >
+      <mat-icon mat-list-icon>business</mat-icon>Zgłoszenia
+      <mat-icon *ngIf="!showMenuRequest">rozwin</mat-icon>
+      <mat-icon *ngIf="showMenuRequest">zwin</mat-icon>
+    </a>
+    <mat-nav-list class="sidenav-submenu" *ngIf="showMenuRequest">
+      <mat-list-item routerLink="" routerLinkActive="active">
+        Lista zgłoszeń
+      </mat-list-item>
+      <mat-list-item routerLink="" routerLinkActive="active">
+        Utwórz zgłoszenie
+      </mat-list-item>
+    </mat-nav-list>
+
+
+
+    <mat-list-item routerLink="" routerLinkActive="active">
+      <span class="material-icons">account_circle</span> Użytkownicy
+    </mat-list-item>
+    <mat-list-item routerLink="" routerLinkActive="active"
+     >
+      <span class="material-icons">settings</span> Ustawienia
+    </mat-list-item>
+    <mat-list-item routerLink="{{routes.LOGOUT}}">
+      <span class="material-icons">logout</span> Wyloguj
+    </mat-list-item>
+</mat-list>

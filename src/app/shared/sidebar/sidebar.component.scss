@@ -1,0 +1,82 @@
+.mat-list-base {
+  border-bottom: 1px solid #D8D8D880;
+  width: 210px;
+  padding-bottom: 16px;
+
+  & .mat-list-item {
+    display: flex;
+    cursor: pointer;
+    color: rgba(128, 128, 128);
+    width: auto;
+    padding-left: 4px;
+
+    &.active {
+      color: #4A4A4A;
+      background-color: #bababd;
+      outline: none;
+
+      & .mat-icon {
+        color: #536DFE;
+      }
+
+      & .circle {
+        background-color: #536DFE;
+      }
+    }
+
+    &:hover {
+      background-color: #bababd;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.material-icons {
+  margin-right: 15px;
+  color: #536DFE;;
+}
+
+
+.sidebar-title {
+  color: rgba(128, 128, 128);
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 32px;
+  margin-left: 24px;
+  margin-bottom: 16px;
+}
+
+.mat-list-base .mat-list-item.ui-element {
+  padding-left: 40px;
+}
+
+.circle {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #B9B9B9;
+  margin-right: 30px;
+}
+
+.project-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 15px;
+  margin-left: 8px;
+
+  &_yellow {
+    background-color: yellow;
+  }
+
+  &_blue {
+    background-color: #536DFE;
+  }
+
+  &_pink {
+    background-color: pink;
+  }
+}
