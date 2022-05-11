@@ -1,0 +1,19 @@
+.charts-wrapper {
+  display: flex;
+  margin: 0 8px;
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+  }
+}
+.chart {
+  width: 100%;
+  @media (max-width: 1024px) {
+    width: 50%;
+  }
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+}
+.page-header{
+  height: 8px;
+}
