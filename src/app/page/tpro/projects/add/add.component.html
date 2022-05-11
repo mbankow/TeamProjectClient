@@ -1,0 +1,25 @@
+<app-layout>
+  <mat-toolbar class="page-header" role="heading">
+    <button *ngIf="projectGroup.valid" mat-raised-button color=primary routerLink="" routerLinkActive="active" (click)="addProject()">Zapisz</button>
+    <button *ngIf="!projectGroup.valid" mat-raised-button color=primary  (click)="invalidForm()">Zapisz</button>
+    <button mat-raised-button color=warn routerLink="" routerLinkActive="active" >Anuluj</button>
+  </mat-toolbar>
+  <div class="tables-wrapper" >
+    <form [formGroup]="projectGroup">
+        <div>
+          <mat-form-field  appearance="fill">
+            <mat-label>Nazwa projektu</mat-label>
+            <input matInput   placeholder="" formControlName=name required>
+            <mat-error *ngIf="projectGroup.controls.name.errors?.required">Nazwa projektu jest wymagana.</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field  appearance="fill">
+            <mat-label >Opis</mat-label>
+            <input matInput   placeholder="" formControlName=description>
+          </mat-form-field>
+        </div>
+    </form>
+  </div>
+  <app-footer></app-footer>
+</app-layout>
