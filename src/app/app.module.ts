@@ -47,6 +47,8 @@ import { AddProjectComponent } from './page/tpro/projects/add/add.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { EditProjectComponent } from './page/tpro/projects/edit/edit.component';
+import { TableTeamComponent } from './page/tpro/teams/table/table.component';
+import { AddComponent } from './page/tpro/teams/add/add.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { EditProjectComponent } from './page/tpro/projects/edit/edit.component';
     TableProjectComponent,
     DialogDeleteComponent,
     AddProjectComponent,
-    EditProjectComponent
+    EditProjectComponent,
+    TableTeamComponent,
+    AddComponent
   ],
   imports: [
     BrowserModule,
