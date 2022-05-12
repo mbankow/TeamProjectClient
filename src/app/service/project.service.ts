@@ -17,19 +17,19 @@ export class ProjectService {
     return this.http.get<ProjectDTO[]>(`${this.apiServerUrl}/project?page=${pageNumber}`)
   }
 
-  public getById(contactId: number): Observable<ProjectDTO>{
-    return this.http.get<ProjectDTO>(`${this.apiServerUrl}/project/${contactId}`)
+  public getById(projectId: number): Observable<ProjectDTO>{
+    return this.http.get<ProjectDTO>(`${this.apiServerUrl}/project/${projectId}`)
   }
 
-  public save(contact: ProjectDTO): Observable<ProjectDTO>{
-    return this.http.post<ProjectDTO>(`${this.apiServerUrl}/project`, contact)
+  public save(project: ProjectDTO): Observable<ProjectDTO>{
+    return this.http.post<ProjectDTO>(`${this.apiServerUrl}/project`, project)
   }
 
-  public update(contact: ProjectDTO): Observable<ProjectDTO>{
-    return this.http.put<ProjectDTO>(`${this.apiServerUrl}/project`, contact)
+  public update(project: ProjectDTO): Observable<ProjectDTO>{
+    return this.http.put<ProjectDTO>(`${this.apiServerUrl}/project`, project)
   }
 
-  public delete(contactId: number): Observable<void>{
-    return this.http.delete<void>(`${this.apiServerUrl}/project/${contactId}`)
+  public delete(projectId: number): Observable<void>{
+    return this.http.delete<void>(`${this.apiServerUrl}/project/${projectId}`)
   }
 }

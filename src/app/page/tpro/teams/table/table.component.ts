@@ -3,46 +3,46 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { routes } from 'src/app/consts';
-import { ProjectDTO } from 'src/app/models/project-dto';
-import { ProjectService } from 'src/app/service/project.service';
+import { TeamDTO } from 'src/app/models/team-dto';
+import { TeamService } from 'src/app/service/team.service';
 import { DialogDeleteComponent } from '../../dialog-delete/dialog-delete.component';
 
 @Component({
-  selector: 'app-tables-project',
+  selector: 'app-table-team',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableProjectComponent implements OnInit {
+export class TableTeamComponent implements OnInit {
 
-  constructor(private projectService: ProjectService,public dialog:MatDialog) { }
+  constructor(private teamService: TeamService,public dialog:MatDialog) { }
   ngOnInit(): void {
-    this.getProjects(1);
+    this.getTeams(1);
   }
 
-  displayedColumns: string[] = ['position', 'name', 'description', 'edit', 'delete'];
-  dataSource = new MatTableDataSource<ProjectDTO>();
-  public projects!: ProjectDTO[];
+  displayedColumns: string[] = ['position', 'name', 'edit', 'delete'];
+  dataSource = new MatTableDataSource<TeamDTO>();
+  public teams!: TeamDTO[];
   public routes: typeof routes = routes;
 
-  public getProjects(page: number): void {
-    this.projectService.get(page).subscribe({
-      next:(response: ProjectDTO[]) => {
-        this.projects = response;
+  public getTeams(page: number): void {
+    this.teamService.get(page).subscribe({
+      next:(response: TeamDTO[]) => {
+        this.teams = response;
         this.dataSource.data = response;
-        console.log(this.projects)},
+        console.log(this.teams)},
         error: (error: HttpErrorResponse) => alert(error.message)
       }
     )
   }
 
-  public deleteProject(project: ProjectDTO){
+  public deleteTeam(team: TeamDTO){
     let dialogRef = this.dialog.open(DialogDeleteComponent,{});
-    console.log(project.id);
+    console.log(team.id);
       dialogRef.afterClosed().subscribe(result =>{
         if(result){
-          this.projectService.delete(project.id).subscribe({
+          this.teamService.delete(team.id).subscribe({
             next:(response:void)=>
-              this.getProjects(1),
+              this.getTeams(1),
             error:(error:HttpErrorResponse)=>
               alert(error.message)
             }
