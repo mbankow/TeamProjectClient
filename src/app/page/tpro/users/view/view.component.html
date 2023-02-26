@@ -1,0 +1,34 @@
+<app-layout>
+<div>
+  <div routerLink="{{routes.USEREDIT}}" routerLinkActive="active">
+    <button mat-raised-button color="primary" color="primary">Edytuj</button></div>
+  <mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>{{user!.name}} {{user!.lastName}}</mat-card-title>
+        <mat-card-subtitle>{{user!.email}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div *ngIf="isMentor"><p>Nazwa firma: {{user.firm}}</p></div>
+        <div *ngIf="memberOfTeam"><p>Nazwa zespołu: {{user.teamAffilation!.name}}</p></div>
+    </mat-card-content>
+</mat-card>
+</div>
+<div *ngIf="isMentor" class="tables-wrapper">
+  <h2>Przydzielone zespoły</h2>
+  <div class="example-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef >Lp. </th>
+        <td mat-cell *matCellDef="let team">{{user.id}}</td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nazwa </th>
+        <td mat-cell *matCellDef="let team"> {{user.name}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
+<div></div>
+</app-layout>

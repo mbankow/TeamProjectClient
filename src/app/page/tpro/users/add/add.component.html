@@ -1,0 +1,59 @@
+<app-layout>
+  <mat-toolbar class="page-header" role="heading">
+    <button *ngIf="userGroup.valid" mat-raised-button color=primary routerLink="{{routes.USERTABLES}}" routerLinkActive="active" (click)="addUser()">Zapisz</button>
+    <button *ngIf="!userGroup.valid" mat-raised-button color=primary  (click)="invalidForm()">Zapisz</button>
+    <button mat-raised-button color=warn routerLink="{{routes.USERTABLES}}" routerLinkActive="active" >Anuluj</button>
+  </mat-toolbar>
+  <div class="tables-wrapper" >
+    <form [formGroup]="userGroup">
+        <div>
+          <mat-form-field  appearance="fill">
+            <mat-label>Imię</mat-label>
+            <input matInput   placeholder="" formControlName=name required>
+            <mat-error *ngIf="userGroup.controls.name.errors?.required">Imię jest wymagane.</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field  appearance="fill">
+            <mat-label>Nazwisko</mat-label>
+            <input matInput   placeholder="" formControlName=lastName required>
+            <mat-error *ngIf="userGroup.controls.lastName.errors?.required">Nazwisko jest wymagane.</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field  appearance="fill">
+            <mat-label >Firma</mat-label>
+            <input matInput   placeholder="" formControlName=firm>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field  appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput   placeholder="" formControlName=email required>
+            <mat-error *ngIf="userGroup.controls.email.errors?.required">Adres email jest wymagany.</mat-error>
+            <mat-error *ngIf="userGroup.controls.email.errors?.email">Proszę podać poprawny adres email.</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field  appearance="fill">
+            <mat-label>Hasło</mat-label>
+            <input matInput   placeholder="" formControlName=password required>
+            <mat-error *ngIf="userGroup.controls.password.errors?.required">Hasło jest wymagane.</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Rola</mat-label>
+            <mat-select [(value)]="user.role" placeholder="State"
+              (selectionChange)="changeSelectedRole($event.value)">
+              <mat-option value="ROLE_ADMIN">ADMIN</mat-option>
+              <mat-option value="ROLE_MENTOR">MENTOR</mat-option>
+              <mat-option value="ROLE_STUDENT">STUDENT</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+    </form>
+  </div>
+  <app-footer></app-footer>
+</app-layout>
+

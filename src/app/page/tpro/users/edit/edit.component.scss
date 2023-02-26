@@ -1,0 +1,32 @@
+.tables-wrapper {
+  padding: 0 0px;
+  height:100%;
+  width:100%;
+}
+table {
+  width: 100%;
+}
+form{
+  padding-left: 10px;
+	padding-right: 20px;
+  padding-top: 10px;
+	padding-bottom: 10px;
+}
+.mat-toolbar{
+  margin-top:10px;
+  margin-left: 3px;
+  border-style: outset;
+  background-color: rgba(223, 222, 222, 0.897);
+}
+.mat-form-field{
+  margin-top: 4px;
+}
+.example-container .mat-form-field{
+  margin-left: 8px;
+}
+button{
+  margin-left: 10px;
+}
+
+
+

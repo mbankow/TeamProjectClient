@@ -1,0 +1,54 @@
+<app-layout>
+  <mat-toolbar class="page-header" role="heading">
+  </mat-toolbar>
+  <div class="tables-wrapper">
+    <button  mat-raised-button  color=primary routerLink="{{routes.USERADD}}" routerLinkActive="active">Dodaj</button>
+  </div>
+  <div class="tables-wrapper">
+    <div class="example-container mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef >Lp. </th>
+          <td mat-cell *matCellDef="let user">{{user.id}}</td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Imię </th>
+          <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef> Nazwisko </th>
+          <td mat-cell *matCellDef="let user"> {{user.lastName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let user"> {{user.email}} </td>
+        </ng-container>
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef> Rola </th>
+          <td mat-cell *matCellDef="let user">
+
+            <mat-form-field appearance="fill">
+              <mat-label>Select an option</mat-label>
+              <mat-select [value]="user.role" placeholder="State"
+                (selectionChange)="changeSelectedRole(user.id, $event.value)">
+                <mat-option value="ROLE_ADMIN">ADMIN</mat-option>
+                <mat-option value="ROLE_MENTOR">MENTOR</mat-option>
+                <mat-option value="ROLE_STUDENT">STUDENT</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef > Usuń </th>
+          <td mat-cell *matCellDef="let user" (click)="deleteUser(user)"><button mat-icon-button color="primary">
+            <mat-icon>delete</mat-icon></button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</app-layout>
