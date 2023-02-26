@@ -1,6 +1,12 @@
 <app-layout>
   <mat-toolbar class="page-header" role="heading">
   </mat-toolbar>
+  <div *ngIf="!isAssignedToTeam">
+  <div class="button">
+    <a routerLink="{{routes.TEAMADD}}" routerLinkActive="active">
+      <button mat-raised-button color="primary" color="primary" >Stwórz zespół</button>
+    </a>
+  </div>
   <div class="tables-wrapper">
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource">
@@ -9,16 +15,27 @@
           <td mat-cell *matCellDef="let team">{{team.id}}</td>
         </ng-container>
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef i18n=""> Tytuł </th>
+          <th mat-header-cell *matHeaderCellDef > Tytuł </th>
           <td mat-cell *matCellDef="let team">{{team.name}}</td>
         </ng-container>
-        <ng-container matColumnDef="edit">
-          <th mat-header-cell *matHeaderCellDef i18n=""> Edytuj </th>
+        <ng-container *ngIf="isStudent" matColumnDef="join">
+          <th mat-header-cell *matHeaderCellDef > </th>
+          <div *ngIf="!teamIsFull">
+            <td mat-cell *matCellDef="let team" routerLink="{{routes.TEAMTABLES}}" routerLinkActive="active">
+            <button mat-raised-button color="primary" color="primary" (click)="enterGroup(team)">Dołącz</button></td>
+            </div>
+          <div *ngIf="teamIsFull">
+            <td mat-cell *matCellDef="let team">
+            <p>Zespół jest pełny.</p></td>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="isAdmin" matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef > Edytuj </th>
           <td mat-cell *matCellDef="let team" routerLink="" routerLinkActive="active">
             <button mat-raised-button color="primary" color="primary">Edytuj</button></td>
         </ng-container>
-        <ng-container matColumnDef="delete">
-          <th mat-header-cell *matHeaderCellDef i18n=""> Usuń </th>
+        <ng-container *ngIf="isAdmin" matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef > Usuń </th>
           <td mat-cell *matCellDef="let team" (click)="deleteTeam(team)"><button mat-icon-button color="primary">
             <mat-icon>delete</mat-icon></button>
           </td>
@@ -28,5 +45,43 @@
       </table>
     </div>
   </div>
+</div>
+<div *ngIf="isAssignedToTeam">
+  <div>
+    <div>
+    <div routerLink="{{routes.TEAMEDIT}}/{{team!.id}}" routerLinkActive="active" class="left-button">
+      <button mat-raised-button color="primary" color="primary">Edytuj</button></div>
+    <div routerLink="{{routes.TEAMTABLES}}" routerLinkActive="active">
+        <button mat-raised-button color="warn" (click)="updateTeam()">Opuść grupe</button>
+      </div>
+    </div>
+    <mat-card class="card">
+      <mat-card-header>
+          <mat-card-title>{{team!.name}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          <p>Preferowane firmy: {{team!.choices}}</p>
+          <p>Przydzielona firma: brak</p>
+      </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="tables-wrapper">
+    <h2>Członkowie zespołu</h2>
+    <div class="example-container mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource2">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Imie </th>
+          <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef> Nazwisko </th>
+          <td mat-cell *matCellDef="let user"> {{user.lastName}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+      </table>
+    </div>
+  </div>
+</div>
   <app-footer></app-footer>
 </app-layout>

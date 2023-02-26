@@ -4,4 +4,5 @@ export interface TeamDTO{
   id: number;
   name: string;
   students: UserDTO[];
+  choices: string;
 }

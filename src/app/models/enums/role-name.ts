@@ -1,5 +1,5 @@
 export enum RoleName {
-  ROLE_ADMIN,
-  ROLE_MENTOR,
-  ROLE_STUDENT
+  ADMIN = "ROLE_ADMIN",
+  MENTOR = "ROLE_MENTOR",
+  STUDENT = "ROLE_STUDENT"
 }

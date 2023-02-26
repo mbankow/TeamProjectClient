@@ -1,6 +1,6 @@
 <app-layout>
 	<mat-toolbar class="page-header" role="heading">
-		<button *ngIf="projectGroup.valid" mat-raised-button color=primary routerLink="{{routes.PROJECTTABLES}}" routerLinkActive="active"  (click)="updateProject()">Zapisz</button>
+		<button *ngIf="projectGroup.valid" mat-raised-button color=primary routerLink="{{routes.PROJECTTABLES}}" routerLinkActive="active"  (click)="savedPro()">Zapisz</button>
 		<button *ngIf="!projectGroup.valid" mat-raised-button color=primary  (click)="invalidForm()">Zapisz</button>
 	  <button mat-raised-button color=warn routerLink="{{routes.PROJECTTABLES}}" routerLinkActive="active" >Anuluj</button>
 	</mat-toolbar>
@@ -15,8 +15,8 @@
 		  </div>
 		  <div>
 			<mat-form-field  appearance="fill">
-			  <mat-label >Komentarz</mat-label>
-			  <input matInput   placeholder="" formControlName=description>
+			  <mat-label >Opis</mat-label>
+			  <textarea matInput   placeholder="" formControlName=description></textarea>
 			</mat-form-field>
 		  </div>
 	  </form>

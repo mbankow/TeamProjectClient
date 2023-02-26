@@ -44,11 +44,22 @@ import { RouterModule } from '@angular/router';
 import { TableProjectComponent } from './page/tpro/projects/table/table.component';
 import { DialogDeleteComponent } from './page/tpro/dialog-delete/dialog-delete.component';
 import { AddProjectComponent } from './page/tpro/projects/add/add.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { EditProjectComponent } from './page/tpro/projects/edit/edit.component';
 import { TableTeamComponent } from './page/tpro/teams/table/table.component';
-import { AddComponent } from './page/tpro/teams/add/add.component';
+import { AddTeamComponent } from './page/tpro/teams/add/add.component';
+import { EditTeamComponent } from './page/tpro/teams/edit/edit.component';
+import { TableUserComponent } from './page/tpro/users/table/table.component';
+import { MatSelectModule } from '@angular/material/select';
+import { AddUserComponent } from './page/tpro/users/add/add.component';
+import { EditUserComponent } from './page/tpro/users/edit/edit.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatInputModule } from '@angular/material/input';
+import { RegisterComponent } from './register/register.component';
+import { ViewUserComponent } from './page/tpro/users/view/view.component';
+import { ViewTeamComponent } from './page/tpro/teams/view/view.component';
+
 
 @NgModule({
   declarations: [
@@ -64,7 +75,14 @@ import { AddComponent } from './page/tpro/teams/add/add.component';
     AddProjectComponent,
     EditProjectComponent,
     TableTeamComponent,
-    AddComponent
+    AddTeamComponent,
+    EditTeamComponent,
+    TableUserComponent,
+    AddUserComponent,
+    EditUserComponent,
+    RegisterComponent,
+    ViewUserComponent,
+    ViewTeamComponent
   ],
   imports: [
     BrowserModule,
@@ -97,10 +115,46 @@ import { AddComponent } from './page/tpro/teams/add/add.component';
     MatSortModule,
     MatTableModule,
     ReactiveFormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSelectModule,
+    HttpClientModule,
+    MatMenuModule,
+    MatInputModule,
+    FormsModule
   ],
   exports:[
-    FooterComponent
+    FooterComponent,
+    MatDialogModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    RouterModule,
+    MatTabsModule,
+    MatBottomSheetModule,
+    MatSnackBarModule,
+    MatTooltipModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatBadgeModule,
+    MatChipsModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatCardModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatStepperModule,
+    MatTreeModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    HttpClientModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,26 @@
-<p>add works!</p>
+<app-layout>
+  <mat-toolbar class="page-header" role="heading">
+    <button *ngIf="teamGroup.valid" mat-raised-button color=primary routerLink="{{routes.TEAMTABLES}}" routerLinkActive="active" (click)="addTeam()">Zapisz</button>
+    <button *ngIf="!teamGroup.valid" mat-raised-button color=primary  (click)="invalidForm()">Zapisz</button>
+    <button mat-raised-button color=warn routerLink="{{routes.TEAMTABLES}}" routerLinkActive="active" >Anuluj</button>
+  </mat-toolbar>
+  <div class="tables-wrapper" >
+    <form [formGroup]="teamGroup">
+        <div>
+          <mat-form-field  appearance="fill">
+            <mat-label>Nazwa zespołu</mat-label>
+            <input matInput   placeholder="" formControlName=name required>
+            <mat-error *ngIf="teamGroup.controls.name.errors?.required">Zespołu projektu jest wymagana.</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field  appearance="fill">
+            <mat-label >Lista wyborów firm</mat-label>
+            <textarea matInput   placeholder="Wpisz wedlug wzoru numer.Nazwa firmy" formControlName=choices></textarea>
+            <mat-error *ngIf="teamGroup.controls.choices.errors?.required">Prosze napisać wybory w kolejności.</mat-error>
+          </mat-form-field>
+        </div>
+    </form>
+  </div>
+  <app-footer></app-footer>
+</app-layout>

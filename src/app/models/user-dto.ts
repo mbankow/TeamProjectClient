@@ -12,4 +12,5 @@ export interface UserDTO{
   role: RoleName;
   teams: TeamDTO[];
   projects: ProjectDTO[];
+  teamAffilation: TeamDTO | null;
 }

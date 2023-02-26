@@ -6,11 +6,11 @@ import { FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { routes } from 'src/app/consts';
+import { RoleName } from 'src/app/models/enums/role-name';
 import { ProjectDTO } from 'src/app/models/project-dto';
 import { ProjectService } from 'src/app/service/project.service';
-
 @Component({
-  selector: 'app-edit',
+  selector: 'app-edit-project',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss']
 })
@@ -19,10 +19,12 @@ export class EditProjectComponent implements OnInit {
   constructor(private projectService: ProjectService,private snackBar: MatSnackBar,private router: ActivatedRoute) { }
 
   public project!: ProjectDTO;
+  public project2!: ProjectDTO;
   public routes: typeof routes = routes;
 
   ngOnInit(): void {
-    this.getProjectById(this.router.snapshot.params.id);
+    //this.getProjectById(this.router.snapshot.params.id);
+    this.projectGroup.patchValue(this.project2);
   }
 
   public projectGroup = new FormGroup({
@@ -40,7 +42,10 @@ export class EditProjectComponent implements OnInit {
   public updateProject(): void {
     this.passNewValuesToProject();
     this.projectService.update(this.project).subscribe({
-      next:(response: ProjectDTO) => this.projectGroup.reset(),
+      next:(response: ProjectDTO) => {
+        this.projectGroup.reset(),
+        this.openSnackBar("Edycja projektu przebiegła pomyślnie.");
+      },
       error:(error: HttpErrorResponse) => {
         alert(error.message);
         this.projectGroup.reset();
@@ -55,6 +60,9 @@ export class EditProjectComponent implements OnInit {
 
   invalidForm(){
     this.openSnackBar("Proszę poprawnie wypełnić formularz projektu");
+  }
+  savedPro(){
+    this.openSnackBar("Edycja projektu przebiegła pomyślnie.");
   }
 
   openSnackBar(message:string){

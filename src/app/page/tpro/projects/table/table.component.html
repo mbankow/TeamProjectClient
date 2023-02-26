@@ -1,6 +1,9 @@
 <app-layout>
   <mat-toolbar class="page-header" role="heading">
   </mat-toolbar>
+  <div *ngIf="isMentor" class="tables-wrapper">
+    <button  mat-raised-button  color=primary routerLink="{{routes.PROJECTADD}}" routerLinkActive="active">Dodaj</button>
+  </div>
   <div class="tables-wrapper">
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource">
@@ -9,20 +12,24 @@
           <td mat-cell *matCellDef="let project">{{project.id}}</td>
         </ng-container>
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef i18n=""> Tytuł </th>
+          <th mat-header-cell *matHeaderCellDef > Tytuł </th>
           <td mat-cell *matCellDef="let project">{{project.name}}</td>
         </ng-container>
         <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef i18n=""> Opis </th>
+          <th mat-header-cell *matHeaderCellDef > Opis </th>
           <td mat-cell *matCellDef="let project">{{project.description}}</td>
         </ng-container>
-        <ng-container matColumnDef="edit">
-          <th mat-header-cell *matHeaderCellDef i18n=""> Edytuj </th>
-          <td mat-cell *matCellDef="let project" routerLink="" routerLinkActive="active">
+        <ng-container *ngIf="!isMentor" matColumnDef="firm">
+          <th mat-header-cell *matHeaderCellDef > Firma </th>
+          <td mat-cell *matCellDef="let project">{{project.owner.firm}}</td>
+        </ng-container>
+        <ng-container *ngIf="isMentor" matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef > Edytuj </th>
+          <td mat-cell *matCellDef="let project" routerLink="{{routes.PROJECTEDIT}}/{{project.id}}" routerLinkActive="active">
             <button mat-raised-button color="primary" color="primary">Edytuj</button></td>
         </ng-container>
-        <ng-container matColumnDef="delete">
-          <th mat-header-cell *matHeaderCellDef i18n=""> Usuń </th>
+        <ng-container *ngIf="isMentor" matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef > Usuń </th>
           <td mat-cell *matCellDef="let project" (click)="deleteProject(project)"><button mat-icon-button color="primary">
             <mat-icon>delete</mat-icon></button>
           </td>
